@@ -1,0 +1,157 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  height: 710px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transition: 1.5s;
+}
+
+#box {
+  position: relative;
+  position: absolute;
+  z-index: 100;
+  width: 370px;
+  padding: 25px 25px 5px 25px;
+  height: 380px;
+  background-color: rgba(245, 245, 245, 0.9);
+  border-radius: 6px;
+}
+
+#box .box_hea {
+  display: block;
+  height: 50px;
+  text-align: center;
+  position: relative;
+  text-indent: 20px;
+  color: #707070;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+#box .box_hea img {
+  width: 25px;
+  position: absolute;
+  top: 0px;
+  left: 72px;
+}
+
+#box input[type='text'], #box input[type='password'] {
+  width: 100%;
+  height: 36px;
+  text-indent: 30px;
+  border: 1px solid #c2b9b9;
+  border-radius: 4px;
+}
+
+#box input[type='checkbox'] {
+  margin-left: 3px;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #aca8a8;
+}
+
+#box #yzm {
+  width: 60%;
+}
+
+#box #yzm_box {
+  position: absolute;
+  top: 220px;
+  left: 270px;
+  display: block;
+  width: 120px;
+  height: 37px;
+  border: 1px solid #c2b9b9;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  text-align: center;
+  line-height: 37px;
+  font-size: 25px;
+  letter-spacing: 10px;
+  filter: blur(1px);
+  cursor: pointer;
+}
+
+#box .yzm_svg {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 231px;
+  left: 30px;
+}
+
+#box .i {
+  transition: 0.3s;
+  opacity: 0;
+  display: block;
+  height: 35px;
+  line-height: 35px !important;
+  font-size: 13px;
+  text-indent: 3px;
+  color: #F56C6C;
+  transition: 0.5s;
+}
+
+#box .yh_svg {
+  position: absolute;
+  width: 18px;
+  top: 86px;
+  left: 30px;
+}
+
+#box .mm_svg {
+  position: absolute;
+  width: 18px;
+  top: 67px;
+  left: 30px;
+}
+
+#box .dui_one, #box .dui_two, #box .dui_three,
+#box .cuo_one, #box .cuo_two, #box .cuo_three {
+  position: absolute;
+  top: 85px;
+  left: 370px;
+  width: 20px;
+  height: 20px;
+}
+
+#box .dui_two,
+#box .cuo_two {
+  top: 157px;
+}
+
+#box .dui_three,
+#box .cuo_three {
+  top: 230px;
+  left: 225px;
+}
+
+#box .cuo_one, #box .cuo_two, #box .cuo_three {
+  display: none;
+}
+
+#box .jizhu {
+  display: flex;
+  line-height: 15px;
+  font-size: 14px;
+}
+
+#box #dl_btn {
+  width: 100%;
+  border: none;
+  background-color: #409eff;
+  color: white;
+  height: 40px;
+  border-radius: 6px;
+  margin-top: 25px;
+  cursor: pointer;
+}

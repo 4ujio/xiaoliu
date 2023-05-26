@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/layui@2.6.8/dist/css/layui.css">
+    <script src="https://unpkg.com/layui@2.6.8/dist/layui.js"></script>
+    <link href="https://cdn.bootcdn.net/ajax/libs/Swiper/9.1.1/swiper-bundle.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/Swiper/9.1.1/swiper-bundle.min.js"></script>
+    <!-- 引入jq -->
+    <script src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js"></script>
+    <!-- 引入css样式 -->
+    <link rel="stylesheet" href="登录.css">
+
+</head>
+<!-- 加载动画 -->
+<style>
+    #loading-animation {
+        background-color: #fff;
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        z-index: 99999999999999999999999999999999999999999999999;
+        margin-top: 0px;
+        top: 0px;
+    }
+
+    #loading-animation-center {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    #loading-animation-center-absolute {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        height: 200px;
+        width: 200px;
+        margin-top: -100px;
+        margin-left: -100px;
+    }
+
+    .loading_object {
+        -moz-border-radius: 50% 50% 50% 50%;
+        -webkit-border-radius: 50% 50% 50% 50%;
+        border-radius: 50% 50% 50% 50%;
+        position: absolute;
+        border-left: 5px solid #87CEFA;
+        border-right: 5px solid #d82048;
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        -webkit-animation: animate 2.5s infinite;
+        animation: animate 2.5s infinite;
+    }
+
+    #loading_one {
+        left: 75px;
+        top: 75px;
+        width: 50px;
+        height: 50px;
+    }
+
+    #loading_two {
+        left: 65px;
+        top: 65px;
+        width: 70px;
+        height: 70px;
+        -webkit-animation-delay: 0.1s;
+        animation-delay: 0.1s;
+    }
+
+    #loading_three {
+        left: 55px;
+        top: 55px;
+        width: 90px;
+        height: 90px;
+        -webkit-animation-delay: 0.2s;
+        animation-delay: 0.2s;
+    }
+
+    #loading_four {
+        left: 45px;
+        top: 45px;
+        width: 110px;
+        height: 110px;
+        -webkit-animation-delay: 0.3s;
+        animation-delay: 0.3s;
+    }
+
+    @-webkit-keyframes animate {
+        50% {
+            -ms-transform: rotate(180deg);
+            -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+        }
+
+        100% {
+            -ms-transform: rotate(0deg);
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+    }
+
+    @keyframes animate {
+        50% {
+            -ms-transform: rotate(180deg);
+            -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+        }
+
+        100% {
+            -ms-transform: rotate(0deg);
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+    }
+</style>
+<script>
+    var flag = 0
+    !function () {
+        function e() {
+            var timers = setTimeout(() => {
+                $("#loading-animation").fadeOut(540)
+                $('#loading-animation').css('display', 'none')
+                var swiper = new Swiper(".mySwiper", {
+                    loop: true,
+                    autoplay: true,
+                    speed: 1600,
+
+                });
+            }, 3200)
+        }
+        window.jQuery
+            ? $(document).ready(() => {
+                e()
+            }) : document.onreadystatechange = (() => { "interactive" === document.readyState && e() })
+    }();
+</script>
+
+<body>
+    <div id="loading-animation">
+        <div id="loading-animation-center">
+            <div id="loading-animation-center-absolute">
+                <div class="loading_object" id="loading_four"></div>
+                <div class="loading_object" id="loading_three"></div>
+                <div class="loading_object" id="loading_two"></div>
+                <div class="loading_object" id="loading_one"></div>
+            </div>
+        </div>
+    </div>
+    <style>
+        html,
+        body {
+            position: relative;
+            height: 100%;
+        }
+
+        body {
+            background: #eee;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+    <div class="swiper mySwiper swiper-no-swiping">
+        <div class="swiper-wrapper swiper-no-swiping">
+            <div class="swiper-slide">
+                <img src="https://file.moyublog.com/d/file/2020-12-24/c7b6ac7753d41818ee1d674668956602.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="https://img1.baidu.com/it/u=531134199,2486961439&fm=253&fmt=auto&app=120&f=JPEG?w=1140&h=641"
+                    alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="https://img1.baidu.com/it/u=3015689181,2663826684&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500"
+                    alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="https://img2.baidu.com/it/u=1293740096,2346622906&fm=253&fmt=auto&app=120&f=JPEG?w=1280&h=800"
+                    alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="https://img2.baidu.com/it/u=3015689181,2663826684&fm=253&fmt=auto&app=138&f=JPEG?w=1280&h=800"
+                    alt="">
+
+            </div>
+            <div class="swiper-slide">
+                <img src="https://img0.baidu.com/it/u=1274331158,2885670405&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500"
+                    alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="https://img0.baidu.com/it/u=1319486536,2639300630&fm=253&fmt=auto&app=120&f=JPEG?w=1280&h=800"
+                    alt="">
+            </div>
+        </div>
+    </div>
+
+    <div id="box">
+        <svg t="1684931395471" class="icon mm_svg" viewBox="0 0 1024 1024" version="1.1"
+            xmlns="http://www.w3.org/2000/svg" p-id="4525" id="mx_n_1684931395472" width="200" height="200">
+            <path
+                d="M780.8 440.746667v-106.666667A250.453333 250.453333 0 0 0 512 85.333333a250.453333 250.453333 0 0 0-268.8 248.746667v106.666667H128V938.666667h768V440.746667h-115.2m-230.4 274.773333v116.48h-76.8v-116.48a69.973333 69.973333 0 0 1-38.4-61.44 73.813333 73.813333 0 0 1 76.8-70.826667 73.813333 73.813333 0 0 1 76.8 70.826667 69.973333 69.973333 0 0 1-38.4 61.44z m153.6-274.773333h-384V334.506667A174.506667 174.506667 0 0 1 512 156.586667a174.506667 174.506667 0 0 1 192 177.493333v106.666667"
+                fill="#c0c4cc" p-id="4526"></path>
+        </svg>
+        <svg t="1684931188086" class="icon yh_svg" viewBox="0 0 1024 1024" version="1.1"
+            xmlns="http://www.w3.org/2000/svg" p-id="3255" width="16" height="16">
+            <path
+                d="M391.136179 588.720987C191.832264 588.720987 42.993669 717.867879 42.993669 905.407919v20.203177C42.993669 1023.643389 202.487948 1023.643389 404.434473 1023.643389h214.477609c193.93345 0 361.440804 0 361.440805-98.032293v-20.203177c0-187.54004-148.838595-316.686931-348.142511-316.686932H391.136179z m109.796169-49.357128c157.874615 0 286.339543-120.87808 286.339543-269.546185 0-148.582859-128.464927-269.460939-286.339543-269.460939-157.78937 0-286.254297 120.87808-286.254297 269.460939 0 148.668104 128.464927 269.546185 286.254297 269.546185z"
+                p-id="3256" fill="#c0c4cc"></path>
+        </svg>
+        <p class="box_hea"><img src="http://101.34.139.112/static/img/logo.67745850.png" alt=""> MyAdmin后台管理系统</p>
+        <input type="text" placeholder="账号" id="username">
+        <svg t="1684931542332" class="icon dui_one" viewBox="0 0 1056 1024" version="1.1"
+            xmlns="http://www.w3.org/2000/svg" p-id="5452" width="16" height="16">
+            <path
+                d="M521.28 96.128c229.696 0 415.872 186.176 415.872 415.872 0 229.696-186.176 415.872-415.872 415.872-229.696 0-415.872-186.176-415.872-415.872 0-229.696 186.176-415.872 415.872-415.872z m0 64C326.944 160.128 169.408 317.664 169.408 512s157.536 351.872 351.872 351.872S873.152 706.336 873.152 512 715.616 160.128 521.28 160.128z m199.168 234.496a32 32 0 0 1 1.28 42.304l-2.752 2.944-232.64 217.984a32 32 0 0 1-41.728 1.728l-2.944-2.624-119.008-120.768a32 32 0 0 1 42.592-47.616l3.008 2.688 97.088 98.528 209.856-196.608a32 32 0 0 1 45.248 1.44z"
+                fill="#c0c4cc" p-id="5453"></path>
+        </svg>
+        <svg t="1684931542332" class="icon dui_two" viewBox="0 0 1056 1024" version="1.1"
+            xmlns="http://www.w3.org/2000/svg" p-id="5452" width="16" height="16">
+            <path
+                d="M521.28 96.128c229.696 0 415.872 186.176 415.872 415.872 0 229.696-186.176 415.872-415.872 415.872-229.696 0-415.872-186.176-415.872-415.872 0-229.696 186.176-415.872 415.872-415.872z m0 64C326.944 160.128 169.408 317.664 169.408 512s157.536 351.872 351.872 351.872S873.152 706.336 873.152 512 715.616 160.128 521.28 160.128z m199.168 234.496a32 32 0 0 1 1.28 42.304l-2.752 2.944-232.64 217.984a32 32 0 0 1-41.728 1.728l-2.944-2.624-119.008-120.768a32 32 0 0 1 42.592-47.616l3.008 2.688 97.088 98.528 209.856-196.608a32 32 0 0 1 45.248 1.44z"
+                fill="#c0c4cc" p-id="5453"></path>
+        </svg>
+        <svg t="1684931542332" class="icon dui_three" viewBox="0 0 1056 1024" version="1.1"
+            xmlns="http://www.w3.org/2000/svg" p-id="5452" width="16" height="16">
+            <path
+                d="M521.28 96.128c229.696 0 415.872 186.176 415.872 415.872 0 229.696-186.176 415.872-415.872 415.872-229.696 0-415.872-186.176-415.872-415.872 0-229.696 186.176-415.872 415.872-415.872z m0 64C326.944 160.128 169.408 317.664 169.408 512s157.536 351.872 351.872 351.872S873.152 706.336 873.152 512 715.616 160.128 521.28 160.128z m199.168 234.496a32 32 0 0 1 1.28 42.304l-2.752 2.944-232.64 217.984a32 32 0 0 1-41.728 1.728l-2.944-2.624-119.008-120.768a32 32 0 0 1 42.592-47.616l3.008 2.688 97.088 98.528 209.856-196.608a32 32 0 0 1 45.248 1.44z"
+                fill="#c0c4cc" p-id="5453"></path>
+        </svg>
+        <svg t="1684932091643" class="icon yzm_svg" viewBox="0 0 1024 1024" version="1.1"
+            xmlns="http://www.w3.org/2000/svg" p-id="6538" width="200" height="200">
+            <path
+                d="M895.744 273.28a59.2 59.2 0 0 0-46.72-51.936A1103.36 1103.36 0 0 1 697.92 186.56a561.28 561.28 0 0 1-135.008-78.912 61.76 61.76 0 0 0-72.16 0 354.112 354.112 0 0 1-136.032 78.4 507.264 507.264 0 0 1-146.944 36.32 55.04 55.04 0 0 0-46.208 51.936S160 404.64 160 519.36C160 727.04 405.056 928 527.616 928c122.528 0 330.24-141.76 363.456-405.504 8.32-155.776 2.56-248.704 2.56-248.704l2.112-0.544z m-133.44 160.416l-256 241.44c-11.52 10.976-29.12 12.704-42.56 4.16l-6.72-5.728-141.248-146.912a35.264 35.264 0 0 1 51.904-47.776l116.32 122.016 230.528-218.08a35.264 35.264 0 1 1 47.776 51.936v-1.056z"
+                fill="#c0c4cc" p-id="6539"></path>
+        </svg>
+        <svg t="1684932333128" class="icon cuo_one" viewBox="0 0 1024 1024" version="1.1"
+            xmlns="http://www.w3.org/2000/svg" p-id="7550" width="200" height="200">
+            <path
+                d="M918.795922 356.854687c-21.798121-51.476314-52.909055-97.631021-92.514092-137.236058-39.605037-39.605037-85.862083-70.818309-137.236058-92.514092C635.727364 104.590046 579.236458 93.128123 520.903458 93.128123s-114.823906 11.461923-168.142315 33.976414c-51.476314 21.798121-97.631021 52.909055-137.236058 92.514092s-70.818309 85.862083-92.514092 137.236058C100.496502 410.173096 89.034579 466.664002 89.034579 524.997002s11.461923 114.823906 33.976414 168.142315c21.798121 51.476314 52.909055 97.631021 92.514092 137.236058 39.605037 39.605037 85.862083 70.818309 137.236058 92.514092 53.21607 22.514491 109.809314 33.976414 168.142315 33.976414s114.823906-11.461923 168.142315-33.976414c51.476314-21.798121 97.631021-52.909055 137.236058-92.514092 39.605037-39.605037 70.818309-85.862083 92.514092-137.236058 22.514491-53.21607 33.976414-109.809314 33.976414-168.142315S941.310414 410.173096 918.795922 356.854687zM520.903458 911.836898c-213.273636 0-386.839896-173.56626-386.839896-386.839896s173.56626-386.839896 386.839896-386.839896 386.839896 173.56626 386.839896 386.839896S734.177094 911.836898 520.903458 911.836898z"
+                p-id="7551" fill="#d81e06"></path>
+            <path
+                d="M545.055367 527.555467l105.204078-105.204078c8.801119-8.801119 8.801119-23.128523 0-31.827304l0 0c-8.801119-8.801119-23.128523-8.801119-31.827304 0L513.228063 495.728163 407.512293 390.114731c-8.801119-8.801119-23.128523-8.801119-31.827304 0l0 0c-8.801119 8.801119-8.801119 23.128523 0 31.827304l105.613432 105.613432L375.173296 633.680592c-8.801119 8.801119-8.801119 23.128523 0 31.827304 8.801119 8.801119 23.128523 8.801119 31.827304 0l106.125125-106.125125 105.613432 105.613432c8.801119 8.801119 23.128523 8.801119 31.827304 0 8.801119-8.801119 8.801119-23.128523 0-31.827304L545.055367 527.555467z"
+                p-id="7552" fill="#d81e06"></path>
+        </svg>
+        <svg t="1684932333128" class="icon cuo_two" viewBox="0 0 1024 1024" version="1.1"
+            xmlns="http://www.w3.org/2000/svg" p-id="7550" width="200" height="200">
+            <path
+                d="M918.795922 356.854687c-21.798121-51.476314-52.909055-97.631021-92.514092-137.236058-39.605037-39.605037-85.862083-70.818309-137.236058-92.514092C635.727364 104.590046 579.236458 93.128123 520.903458 93.128123s-114.823906 11.461923-168.142315 33.976414c-51.476314 21.798121-97.631021 52.909055-137.236058 92.514092s-70.818309 85.862083-92.514092 137.236058C100.496502 410.173096 89.034579 466.664002 89.034579 524.997002s11.461923 114.823906 33.976414 168.142315c21.798121 51.476314 52.909055 97.631021 92.514092 137.236058 39.605037 39.605037 85.862083 70.818309 137.236058 92.514092 53.21607 22.514491 109.809314 33.976414 168.142315 33.976414s114.823906-11.461923 168.142315-33.976414c51.476314-21.798121 97.631021-52.909055 137.236058-92.514092 39.605037-39.605037 70.818309-85.862083 92.514092-137.236058 22.514491-53.21607 33.976414-109.809314 33.976414-168.142315S941.310414 410.173096 918.795922 356.854687zM520.903458 911.836898c-213.273636 0-386.839896-173.56626-386.839896-386.839896s173.56626-386.839896 386.839896-386.839896 386.839896 173.56626 386.839896 386.839896S734.177094 911.836898 520.903458 911.836898z"
+                p-id="7551" fill="#d81e06"></path>
+            <path
+                d="M545.055367 527.555467l105.204078-105.204078c8.801119-8.801119 8.801119-23.128523 0-31.827304l0 0c-8.801119-8.801119-23.128523-8.801119-31.827304 0L513.228063 495.728163 407.512293 390.114731c-8.801119-8.801119-23.128523-8.801119-31.827304 0l0 0c-8.801119 8.801119-8.801119 23.128523 0 31.827304l105.613432 105.613432L375.173296 633.680592c-8.801119 8.801119-8.801119 23.128523 0 31.827304 8.801119 8.801119 23.128523 8.801119 31.827304 0l106.125125-106.125125 105.613432 105.613432c8.801119 8.801119 23.128523 8.801119 31.827304 0 8.801119-8.801119 8.801119-23.128523 0-31.827304L545.055367 527.555467z"
+                p-id="7552" fill="#d81e06"></path>
+        </svg>
+        <svg t="1684932333128" class="icon cuo_three" viewBox="0 0 1024 1024" version="1.1"
+            xmlns="http://www.w3.org/2000/svg" p-id="7550" width="200" height="200">
+            <path
+                d="M918.795922 356.854687c-21.798121-51.476314-52.909055-97.631021-92.514092-137.236058-39.605037-39.605037-85.862083-70.818309-137.236058-92.514092C635.727364 104.590046 579.236458 93.128123 520.903458 93.128123s-114.823906 11.461923-168.142315 33.976414c-51.476314 21.798121-97.631021 52.909055-137.236058 92.514092s-70.818309 85.862083-92.514092 137.236058C100.496502 410.173096 89.034579 466.664002 89.034579 524.997002s11.461923 114.823906 33.976414 168.142315c21.798121 51.476314 52.909055 97.631021 92.514092 137.236058 39.605037 39.605037 85.862083 70.818309 137.236058 92.514092 53.21607 22.514491 109.809314 33.976414 168.142315 33.976414s114.823906-11.461923 168.142315-33.976414c51.476314-21.798121 97.631021-52.909055 137.236058-92.514092 39.605037-39.605037 70.818309-85.862083 92.514092-137.236058 22.514491-53.21607 33.976414-109.809314 33.976414-168.142315S941.310414 410.173096 918.795922 356.854687zM520.903458 911.836898c-213.273636 0-386.839896-173.56626-386.839896-386.839896s173.56626-386.839896 386.839896-386.839896 386.839896 173.56626 386.839896 386.839896S734.177094 911.836898 520.903458 911.836898z"
+                p-id="7551" fill="#d81e06"></path>
+            <path
+                d="M545.055367 527.555467l105.204078-105.204078c8.801119-8.801119 8.801119-23.128523 0-31.827304l0 0c-8.801119-8.801119-23.128523-8.801119-31.827304 0L513.228063 495.728163 407.512293 390.114731c-8.801119-8.801119-23.128523-8.801119-31.827304 0l0 0c-8.801119 8.801119-8.801119 23.128523 0 31.827304l105.613432 105.613432L375.173296 633.680592c-8.801119 8.801119-8.801119 23.128523 0 31.827304 8.801119 8.801119 23.128523 8.801119 31.827304 0l106.125125-106.125125 105.613432 105.613432c8.801119 8.801119 23.128523 8.801119 31.827304 0 8.801119-8.801119 8.801119-23.128523 0-31.827304L545.055367 527.555467z"
+                p-id="7552" fill="#d81e06"></path>
+        </svg>
+        <p class="i yhm_i">用户名不能为空</p>
+        <input type="password" placeholder="密码" id="password">
+        <p class="i">密码不能为空</p>
+        <input type="text" placeholder="请输入验证码" id="yzm">
+        <span id="yzm_box" title="点击更换验证码"></span>
+        <p class="i">验证码不能为空</p>
+        <div class="jizhu">
+            <input type="checkbox" id="jizhu_yh">&nbsp;&nbsp;记住我
+        </div>
+        <button id="dl_btn">登录</button>
+    </div>
+</body>
+<script>
+    var i = 0,
+        yzmarr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'],
+        newyzmarr = [], sum = '', jzflag, flag = 0, dlflag = localStorage.getItem('ssflag')
+    $(function () {
+        // bodyfun()
+        jjfun()
+        //账号
+        $('#username').focus(userfun)
+        $('#username').blur(usersfun)
+        //密码
+        $('#password').focus(passfun)
+        $('#password').blur(passsfun)
+        //验证码
+        $('#yzm').focus(yzmfun)
+        $('#yzm').blur(yzmsfun)
+        //登录
+        $('#dl_btn').click(dlFun)
+        //验证码
+        sjyzmFun()
+        $('#yzm_box').click(ssjyzmFun)
+        //记住我
+        $('#jizhu_yh').change(jzFfun)
+    })
+    function jjfun() {
+
+        if (dlflag == 'true') {
+            tanFun('欢迎回来')
+            setTimeout(function () {
+                location.href = '列表.html'
+            }, 2000)
+        } else {
+            return
+        }
+    }
+    //是否记住密码
+    function jzFfun() {
+        jzflag = $('#jizhu_yh').prop('checked');
+    }
+    //账号
+    function userfun() {
+        $(this).css('borderColor', '#409eff')
+    }
+    function usersfun() {
+        $('#username').css('borderColor', 'rgb(172, 168, 168)')
+        if ($('#username').val() == '') {
+            $('.i:eq(0)').css('opacity', '1')
+            $('.dui_one').css('display', 'none')
+            $('.cuo_one').css('display', 'block')
+            $('#username').css('borderColor', 'red')
+
+        } else {
+            $('.i:eq(0)').css('opacity', '0')
+            $('.cuo_one').css('display', 'none')
+            $('.dui_one').css('display', 'block')
+        }
+    }
+    // 密码
+    function passfun() {
+        $(this).css('borderColor', '#409eff')
+    }
+    function passsfun() {
+        $('#password').css('borderColor', 'rgb(172, 168, 168)')
+        if ($('#password').val() == '') {
+            $('.i:eq(1)').css('opacity', '1')
+            $('.dui_two').css('display', 'none')
+            $('.cuo_two').css('display', 'block')
+
+        } else {
+            $('.i:eq(1)').css('opacity', '0')
+            $('.cuo_two').css('display', 'none')
+            $('.dui_two').css('display', 'block')
+        }
+    }
+    //验证码
+    function yzmfun() {
+        $(this).css('borderColor', '#409eff')
+    }
+    function yzmsfun() {
+        $('#yzm').css('borderColor', 'rgb(172, 168, 168)')
+        if ($('#yzm').val() == '') {
+            $('.i:eq(2)').css('opacity', '1')
+            $('.dui_three').css('display', 'none')
+            $('.cuo_three').css('display', 'block')
+
+        } else {
+            $('.i:eq(2)').css('opacity', '0')
+            $('.cuo_three').css('display', 'none')
+            $('.dui_three').css('display', 'block')
+        }
+    }
+    //登录
+    function dlFun() {
+        let yzmnum = $('#yzm_box').html()
+        if ($('#yzm').val() !== yzmnum) {
+            $('.i:eq(2)').html('验证码错误')
+            $('.i:eq(2)').css('opacity', '1')
+        } else if ($('#yzm').val() == yzmnum) {
+            if ($('#username').val() == '22' && $('#password').val() == '11') {
+                sessionStorage.setItem('this_yh', $('#username').val())
+                if (localStorage.getItem('ssflag') == null && jzflag !== undefined) {
+                    localStorage.setItem('ssflag', JSON.stringify(jzflag))
+                }
+                layer.open({
+                    type: 3,
+                })
+                setTimeout(function () {
+                    location.href = '列表.html'
+                }, 1500)
+            } else {
+                tanFun('账号或密码错误')
+            }
+        }
+    }
+    // 随机四位验证码
+    function sjyzmFun() {
+        sum = ''
+        for (var i = 0; i < 4; i++) {
+            var n = Math.floor(Math.random() * yzmarr.length)
+            newyzmarr.push(yzmarr[n])
+        }
+        sum = newyzmarr.join('')
+        $('#yzm_box').css({
+            transition: '0.5s'
+        })
+        $('#yzm_box').html(sum.substring(sum.length - 4, sum.length))
+    }
+    function ssjyzmFun() {
+        $('#yzm_box').html(' ')
+        sjyzmFun()
+    }
+    function tanFun(con) {
+        layer.msg(`${con}`, function () {
+            icon: 1;
+            anim: 6;
+        });
+    }
+</script>
+
+</html>
